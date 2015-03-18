@@ -7,8 +7,8 @@ Sources for all examples listed below.
 For a quick review of goroutines and channels, see the concurrency sections of
 the golang [tour](http://tour.golang.org/concurrency/1), [bootcamp](http://www.golangbootcamp.com/book/concurrency), or [intro-book](http://www.golang-book.com/10/index.htm).
 
-"Channels are concurrent-safe queues that are used to safely pass messages
-between Go’s lightweight processes (goroutines). The message-passing style they encourage permits the programmer to safely coordinate multiple concurrent tasks with easy-to-reason-about semantics and control flow that often trumps the use of callbacks or shared memory." -- Alan Shreve
+*Channels are concurrent-safe queues that are used to safely pass messages
+between Go’s lightweight processes (goroutines). The message-passing style they encourage permits the programmer to safely coordinate multiple concurrent tasks with easy-to-reason-about semantics and control flow that often trumps the use of callbacks or shared memory.* — Alan Shreve
 
 
 ## Articles
