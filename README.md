@@ -17,7 +17,6 @@ between Go’s lightweight processes (goroutines). The message-passing style the
 * [Pipelines and Cancellation](http://blog.golang.org/pipelines)
 * [Context](http://blog.golang.org/context)
 * [API Patterns](https://inconshreveable.com/07-08-2014/principles-of-designing-go-apis-with-channels/) - principles of designing Go APIs with channels
-* [Principles of designing Go APIs with channels](https://inconshreveable.com/07-08-2014/principles-of-designing-go-apis-with-channels/)
 
 
 ## Slides
