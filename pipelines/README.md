@@ -40,5 +40,4 @@ This should return:
     OK: ☆ hello ☆
 
 The [`multi-listen.go`](multi-listen.go) code sample is a slight modification
-of `http.go`, where we listen for messages on two different routes and filter the messages
-accordingly.
+of `http.go`, where we listen for messages on two different routes and filter the messages accordingly:  we accept messages coming from `/kosher` and filter anything coming from `/suspect`.

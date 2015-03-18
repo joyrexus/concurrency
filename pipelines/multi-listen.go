@@ -5,6 +5,15 @@ import (
 	"net/http" // production-grade HTTP server
 )
 
+// Msg type now contains various message features, including the path on which
+// the http POST request was received, the `data` parameter from the form
+// values in the POST, and a signal channel for notifying the handler that our
+// pipeline is finished.  That is, we need to signal the HTTP handler to write 
+// a response to the requesting client and close the connection (see `Listen`
+// function).  
+//
+// The signaling channel also indicates the message status: it receives a 
+// value of `false` when a message gets filtered and `true` when stored.
 type Msg struct {
     Path string    // route receiving the data
 	Data string    // 'data' parameter extracted from form values
@@ -13,7 +22,7 @@ type Msg struct {
 
 // Listen now constructs messages and passes them down the channel when it
 // receives an incoming POST request with a `data` field in the form data.
-// We're ppassing messages as pointers, now, because the stages can modify 
+// We're passing messages as pointers, now, because the stages can modify 
 // the message.
 func Listen(out chan *Msg) {
 	h := func(w http.ResponseWriter, r *http.Request) {
@@ -24,8 +33,8 @@ func Listen(out chan *Msg) {
 		}
 		out <- msg
 
-		success := <-msg.Done // wait for done signal
-		if !success {
+		success := <-msg.Done   // wait for done signal
+		if !success {           // message was filtered
             err := fmt.Sprintf("aborted: %s received on %s", msg.Data, msg.Path)
 			w.Write([]byte(err))
 			return
@@ -33,8 +42,8 @@ func Listen(out chan *Msg) {
 		w.Write([]byte(fmt.Sprintf("OK: %s", msg.Data)))
 	}
 
-	http.HandleFunc("/kosher", h)
-	http.HandleFunc("/suspect", h)
+	http.HandleFunc("/kosher", h)       // accept messages from this route
+	http.HandleFunc("/suspect", h)      // filter messages from this route
 	fmt.Println("listening on :8080")
 	http.ListenAndServe(":8080", nil) // blocks
 }
