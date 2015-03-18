@@ -1,6 +1,6 @@
-# 
+# Concurrent Data Pipelines
 
-![Listen, Enrich, Store](schematic.png)
+![Listen, Enrich, Store](schematic.jpg)
 
 [Pipelined data processing](http://peter.bourgon.org/go-do/#24) example from Peter Bourgon's talk [Go Do](http://peter.bourgon.org/go-do).
 
