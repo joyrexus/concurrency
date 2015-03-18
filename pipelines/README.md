@@ -1,10 +1,10 @@
 # Concurrent Data Pipelines
 
-![Listen, Enrich, Store](schematic.jpg)
-
 [Pipelined data processing](http://peter.bourgon.org/go-do/#24) example from Peter Bourgon's talk [Go Do](http://peter.bourgon.org/go-do).
 
 Peter provides an example of a staged pipeline: a simple and clean model of subscribing to an event publisher (Listen), converting messages to enriched data models (Enrich), and feeding them into a data store (Store).
+
+![Listen, Enrich, Store](schematic.jpg)
 
 The example uses channels to pass ownership of a message between the various stages, which makes the program naturally concurrent.
 
